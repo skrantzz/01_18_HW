@@ -1,17 +1,41 @@
+var lowercase = "abcdefghijklmnopqrstuvwxyz",
+  uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  numbers = "0123456789",
+  punctuation = "!@#$%^&*()_+~`|}{[]:;?><,./-=",
+  lowercaseInput = document.getElementById("lowercase"),
+  uppercaseInput = document.getElementById("uppercase"),
+  punctuationInput = document.getElementById("punctuation"),
+  numbersInput = document.getElementById("numbers");
+let password = "";
+
 // generate random pwd
 function generate() {
   // set pwd length/complexity
   let complexity = document.getElementById("slider").value;
-  //   possible pwd values
-  let values = "abcdefhijklmnopqrstuvwxyzABCDEFHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+";
+  let values = "";
 
-  let password = "";
-  for (var i = 0; i <= complexity; i++) {
-    password =
-      password +
-      values.charAt(Math.floor(Math.random() * Math.floor(values.length - 1)));
+  if (lowercaseInput.checked) {
+    values += lowercase;
   }
-
+  if (uppercaseInput.checked) {
+    values += uppercase;
+  }
+  if (punctuationInput.checked) {
+    values += punctuation;
+  }
+  if (numbersInput.checked) {
+    values += numbers;
+  }
+  //   possible pwd values
+  password = "";
+  for (var i = 0; i <= complexity; i++) {
+    password += values.charAt(
+      Math.floor(Math.random() * Math.floor(values.length - 1))
+    );
+  }
+  if (password === "") {
+    alert("Check a box, dummy!");
+  }
   // add pwd to textbox
   document.getElementById("display").value = password;
 }
@@ -31,9 +55,12 @@ document.getElementById("slider").oninput = function() {
 
 // func to copy to clipboard
 function copyPwd() {
-  var copyText = document.getElementById("display").select();
-
-  document.execCommand("copy");
-  // alert copied text
-  alert("Password copied to clipboard!");
+  if (password != "") {
+    var copyText = document.getElementById("display").select();
+    document.execCommand("copy");
+    // alert copied text
+    alert("Password copied to clipboard!");
+  } else {
+    alert("It's empty, dummy!");
+  }
 }

@@ -29,11 +29,36 @@
             <input type="range" min="0" max="50" name="slider" id="slider" />
             <br />
             <!-- "" means empty link -->
-            <button onclick="generate()">Generate me!!!</button>
-            <button onclick="copyPwd()">Copy me!!!</button>
+            <button id="generate" onclick="generate()">Generate me!!!</button>
+            <button id="copy" onclick="copyPwd()">Copy me!!!</button>
 
             <!-- going to populate length with JS -->
             <div id="length"></div>
+
+            <div class="control">
+              <input type="checkbox" id="lowercase" name="test" />
+              <label class="check-label" for="lowercase"
+                ><span class="checkbox">Lowercase Characters</span></label
+              >
+            </div>
+            <div class="control">
+              <input type="checkbox" id="uppercase" />
+              <label class="check-label" for="uppercase"
+                ><span class="checkbox">Uppercase Characters</span></label
+              >
+            </div>
+            <div class="control">
+              <input type="checkbox" id="numbers" />
+              <label class="check-label" for="numbers"
+                ><span class="checkbox">Numbers</span></label
+              >
+            </div>
+            <div class="control">
+              <input type="checkbox" id="punctuation" />
+              <label class="check-label" for="punctuation"
+                ><span class="checkbox">Special Characters</span></label
+              >
+            </div>
           </div>
         </div>
       </div>
